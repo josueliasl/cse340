@@ -1,15 +1,17 @@
-const express = require('express');
-const router = express.Router();
-const path = require("path");
+/* ******************************************
+ * static.js
+ * Route file for static pages
+ ******************************************/
 
-// Static Routes
-// Set up "public" folder / subfolders for static files
-router.use(express.static(path.join(__dirname, "../public")));
-router.use("/css", express.static(path.join(__dirname, "../public/css")));
-router.use("/js", express.static(path.join(__dirname, "../public/js")));
-router.use("/images", express.static(path.join(__dirname, "../public/images")));
+const express = require("express")
+const router = express.Router()
 
-module.exports = router;
+/* ******************************
+ * Route to build home page
+ * ***************************** */
+router.get("/", (req, res) => {
+  res.render("index", { title: "Home" })
+})
 
-
+module.exports = router
 

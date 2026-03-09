@@ -1,0 +1,135 @@
+@media (min-width: 600px) {
+
+    body {
+        background-image: url("../images/site/checkerboard.jpg");
+        background-repeat: repeat;
+        margin: 0;
+    }
+
+    #wrapper {
+        background-color: white;
+        width: 90%;
+        max-width: 1000px;
+        margin: 35px auto;
+
+        border: 5px solid #088ec3;
+        border-radius: 10px;
+    }
+
+    #actual_body {
+        margin: 15px;
+    }
+
+    /* HEADER */
+
+    h1,
+    .navigation {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .head {
+        display: flex;
+        justify-content: space-between;
+        margin: 8px;
+    }
+
+    /* NAVIGATION */
+
+    .navigation {
+        background-color: black;
+        color: #fff;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navigation a {
+        margin: 8px;
+        color: white;
+        text-decoration: none;
+    }
+
+    /* DELOREAN SECTION */
+
+    main {
+        padding: 10px;
+    }
+
+    .delorean {
+        position: relative;
+        margin-bottom: 60px;
+    }
+
+    .delorean img {
+        width: 400px;
+    }
+
+
+    .own {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+
+        background: rgba(242, 237, 237, 0.95);
+        padding: 15px;
+        width: 200px;
+
+        border-radius: 6px;
+        color: #088ec3;
+    }
+
+
+    .bottom-sections {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+
+    .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 15px;
+
+    }
+
+    .cards div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        color: #088ec3;
+        font-size: larger;
+    }
+
+    .cards div img {
+        background-color: #088ec3;
+        padding: 20px;
+
+        width: 120px;
+        height: 120px;
+    }
+
+    .cards a {
+        text-decoration: underline;
+    }
+
+    .reviews {
+        font-size: larger;
+        justify-items: center;
+        align-items: center;
+        align-content: center;
+    }
+
+    .bullets {
+        font-size: larger;
+    }
+
+    /* FOOTER */
+
+    footer {
+        margin-top: 20px;
+    }
+
+}
