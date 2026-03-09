@@ -1,0 +1,100 @@
+
+@media (min-width: 600px) {
+body {
+    background-image: url(images/site/checkerboard.jpg);
+    margin: 0;
+    justify-content: baseline;
+    width: 95%;
+    justify-self: center;
+    background-repeat: repeat;
+}
+#wrapper{
+    background-color: white;
+    width: 90%;
+    justify-self: center;
+    border: 5px solid #088ec3;
+    border-radius: 10px;    
+    margin-top: 35px;
+    margin-bottom: 35px;
+    max-width: 900px;
+}
+#actual_body{
+    margin: 15px;
+}
+h1,
+.navigation {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 8px;
+}
+
+.navigation {
+    background-color: black;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navigation a {
+    margin: 8px;
+}
+
+main {
+    background-image: url(images/vehicles/delorean.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.delorean {
+    position: relative;
+}
+
+.delorean img {
+    width: 230px;
+}
+
+.own {
+    background: rgba(242, 237, 237, 0.945);
+    padding: 15px;
+    width: 200px;
+    border-radius: 6px;
+    color: #088ec3;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.cards div img {
+    background-color: #088ec3;
+    padding: 20px;
+    width: 120px;
+    height: 120px;
+}
+
+.cards div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #088ec3;
+    font-size: larger;
+    text-decoration: underline;
+
+}
+
+aside{
+    display: flex;
+}
+.bullets{
+    font-size: larger;
+}
+}

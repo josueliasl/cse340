@@ -1,0 +1,85 @@
+
+#wrapper{
+    
+    width: 100%;
+    justify-self: center;  
+    max-width: 599px;
+}
+
+h1,
+.navigation {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 8px;
+}
+
+.navigation {
+    background-color: black;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navigation a {
+    margin: 8px;
+}
+
+main {
+    background-image: url(images/vehicles/delorean.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.delorean {
+    position: relative;
+}
+
+.delorean img {
+    width: 210px;
+}
+
+.own {
+    background: rgba(242, 237, 237, 0.945);
+    padding: 15px;
+    width: 180px;
+    border-radius: 6px;
+    color: #088ec3;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.cards div img {
+    background-color: #088ec3;
+    padding: 20px;
+    width: 120px;
+    height: 120px;
+}
+
+.cards div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #088ec3;
+    font-size: larger;
+    text-decoration: underline;
+
+}
+
+aside{
+    display: flex;
+    flex-direction: column;
+}
+.bullets{
+    font-size: larger;
+}
