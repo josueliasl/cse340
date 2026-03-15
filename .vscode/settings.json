@@ -1,0 +1,36 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": {
+                    "rejectUnauthorized": true
+                }
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "dpg-d6kfuinpm1nc73etkvo0-a.virginia-postgres.render.com",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "Render CSE340",
+            "group": "dpg-d6kfuinpm1nc73etkvo0-a.virginia-postgres.render.com",
+            "database": "cse340_kk2l",
+            "username": "cse340"
+        },
+        {
+            "pgOptions": {
+                "ssl": {
+                    "rejectUnauthorized": true
+                }
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "dpg-d6qv9u4hg0os73b4ue20-a.virginia-postgres.render.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "Render CSE340_new",
+            "database": "cse340_new_k2ps",
+            "username": "cse340_new"
+        }
+    ]
+}
