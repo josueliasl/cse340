@@ -1,50 +1,57 @@
 const invModel = require("../models/inventory-model")
+const Util = {}
 
 /* ************************
- *  Builds the navigation dynamically
- * ************************ */
-async function getNav() {
-  try {
-    const data = await invModel.getClassifications()
-    let list = "<ul>"
-    list += '<li><a href="/" title="Home page">Home</a></li>'
-    data.rows.forEach((row) => {
-      list += `<li><a href="/inv/type/${row.classification_id}" title="View our ${row.classification_name} lineup of vehicles">${row.classification_name}</a></li>`
-    })
-    list += "</ul>"
-    return list
-  } catch (error) {
-    console.error("getNav error: " + error)
-  }
+ * Constructs the nav HTML unordered list
+ ************************** */
+Util.getNav = async function (req, res, next) {
+  let data = await invModel.getClassifications()
+  let list = '<nav class="navigation">'
+  list += '<a href="/" title="Home page">Home</a>'
+  data.rows.forEach((row) => {
+    list += `<a href="/inv/type/${row.classification_id}" title="See our inventory of ${row.classification_name} vehicles">${row.classification_name}</a>`
+  })
+  list += "</nav>"
+  return list
 }
 
 /* **************************************
- *  Build the classification view HTML
+ * Build the classification view HTML
  * ************************************ */
-async function buildClassificationGrid(data) {
-  try {
-    let grid = '<ul id="inv-display">'
-    data.forEach(vehicle => {
+Util.buildClassificationGrid = async function(data){
+  let grid
+  if(data.length > 0){
+    grid = '<ul id="inv-display">'
+    data.forEach(vehicle => { 
       grid += '<li>'
-      grid += `<a href="../../inv/detail/${vehicle.inv_id}" title="View ${vehicle.inv_make} ${vehicle.inv_model} details">`
-      grid += `<img src="${vehicle.inv_thumbnail}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors">`
-      grid += '<hr>'
-      grid += `<h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>`
-      grid += '</a>'
-      grid += '<span>$' + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
+      grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
+      + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
+      + ' details"><img src="' + vehicle.inv_thumbnail 
+      +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
+      +' on CSE Motors" /></a>'
+      grid += '<div class="namePrice">'
+      grid += '<hr />'
+      grid += '<h2>'
+      grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
+      + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
+      + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
+      grid += '</h2>'
+      grid += '<span>$' 
+      + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
+      grid += '</div>'
       grid += '</li>'
     })
     grid += '</ul>'
-    return grid
-  } catch (error) {
-    console.error("buildClassificationGrid error: " + error)
+  } else { 
+    grid = '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
+  return grid
 }
 
 /* **************************************
- *  Build the inventory item detail HTML
+ * Build the inventory item detail HTML
  * ************************************ */
-function buildItemDetail(itemData) {
+Util.buildItemDetail = function(itemData) {
   try {
     // Format price as USD
     const formattedPrice = new Intl.NumberFormat('en-US', {
@@ -76,9 +83,4 @@ function buildItemDetail(itemData) {
   }
 }
 
-module.exports = { 
-  getNav, 
-  buildClassificationGrid,
-  buildItemDetail 
-}
-
+module.exports = Util

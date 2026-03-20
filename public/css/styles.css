@@ -7,100 +7,86 @@
 
 /* Detail View Styles */
 .detail-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin: 2rem 0;
-    padding: 1rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .detail-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .detail-info {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .detail-info h2 {
-    color: #333;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-    border-bottom: 2px solid #4CAF50;
-    padding-bottom: 0.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 0.5rem;
 }
 
 .detail-price {
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: #2c3e50;
-    margin: 1rem 0;
-    background-color: #e8f5e9;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    display: inline-block;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 1rem 0;
+  background-color: #e8f5e9;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  display: inline-block;
 }
 
 .detail-miles,
 .detail-color {
-    font-size: 1.2rem;
-    margin: 0.75rem 0;
-    color: #555;
+  font-size: 1.2rem;
+  margin: 0.75rem 0;
+  color: #555;
 }
 
 .detail-description {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-top: 1.5rem;
-    color: #666;
-    background-color: white;
-    padding: 1rem;
-    border-radius: 4px;
-    border-left: 4px solid #4CAF50;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 1.5rem;
+  color: #666;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  border-left: 4px solid #4CAF50;
 }
 
 /* Mobile Responsive */
 @media screen and (max-width: 768px) {
-    .detail-container {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 0.5rem;
-    }
-    
-    .detail-info h2 {
-        font-size: 1.5rem;
-    }
-    
-    .detail-price {
-        font-size: 1.8rem;
-    }
-    
-    .detail-miles,
-    .detail-color {
-        font-size: 1.1rem;
-    }
-    
-    .detail-description {
-        font-size: 1rem;
-    }
-}
+  .detail-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
 
-@media screen and (max-width: 480px) {
-    .detail-info {
-        padding: 0.5rem;
-    }
-    
-    .detail-info h2 {
-        font-size: 1.3rem;
-    }
-    
-    .detail-price {
-        font-size: 1.5rem;
-    }
+  .detail-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .detail-price {
+    font-size: 1.8rem;
+  }
+
+  .detail-miles,
+  .detail-color {
+    font-size: 1.1rem;
+  }
+
+  .detail-description {
+    font-size: 1rem;
+  }
 }
