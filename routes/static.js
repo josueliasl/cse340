@@ -1,17 +1,9 @@
-/* ******************************************
- * static.js
- * Route file for static pages
- ******************************************/
-
 const express = require("express")
 const router = express.Router()
+const baseController = require("../controllers/baseController")
 
-/* ******************************
- * Route to build home page
- * ***************************** */
-router.get("/", (req, res) => {
-  res.render("index", { title: "Home" })
-})
+router.get("/", baseController.buildHome)
+router.get("/trigger-error", baseController.triggerError)
 
 module.exports = router
 

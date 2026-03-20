@@ -7,14 +7,11 @@ const expressLayouts = require("express-ejs-layouts")
 const path = require("path")
 require("dotenv").config()
 
-const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
-const utilities = require("./utilities/")  // ADD THIS LINE for error handler
+const staticRoutes = require("./routes/static")
+const utilities = require("./utilities/")
 
 const app = express()
-
-/* Routes */
-const staticRoutes = require("./routes/static")
 
 /* View Engine */
 app.set("view engine", "ejs")
@@ -27,12 +24,10 @@ app.set("layout", "layouts/layout")
 app.use(express.static(path.join(__dirname, "public")))
 
 /* Routes */
-// Index route
-app.get("/", baseController.buildHome)
-
 // Inventory routes
 app.use("/inv", inventoryRoute)
 
+// Static routes (home, trigger-error, etc.)
 app.use("/", staticRoutes)
 
 // File Not Found Route - must be last route in list
