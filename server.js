@@ -7,10 +7,12 @@ const pool = require('./database/')
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const path = require("path")
+const bodyParser = require("body-parser")  // Added
 require("dotenv").config()
 
 const inventoryRoute = require("./routes/inventoryRoute")
 const staticRoutes = require("./routes/static")
+const accountRoute = require("./routes/accountRoute")
 const utilities = require("./utilities/")
 
 const app = express()
@@ -39,6 +41,10 @@ app.use(function (req, res, next) {
   next()
 })
 
+// Body parser middleware
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
 /* View Engine */
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
@@ -46,11 +52,12 @@ app.set("views", path.join(__dirname, "views"))
 app.use(expressLayouts)
 app.set("layout", "layouts/layout")
 
-
-
 /* Routes */
 // Inventory routes
 app.use("/inv", inventoryRoute)
+
+// Account routes
+app.use("/account", accountRoute)
 
 // Static routes (home, trigger-error, etc.)
 app.use("/", staticRoutes)
