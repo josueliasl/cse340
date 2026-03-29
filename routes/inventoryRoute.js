@@ -2,6 +2,7 @@ const express = require('express')
 const router = new express.Router()
 const invController = require('../controllers/invController')
 const utilities = require('../utilities/')
+console.log('Inventory route loaded')
 
 // Route to build inventory management view
 router.get('/', utilities.handleErrors(invController.buildManagementView))
