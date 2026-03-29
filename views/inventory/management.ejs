@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+        <main>
+            <h1>Vehicle Management</h1>
+
+            <% if (flashMessage) { %>
+                <div class="alert alert-success">
+                    <%= flashMessage %>
+                </div>
+                <% } %>
+                    <% if (errors && errors.length> 0) { %>
+                        <div class="alert alert-danger">
+                            <ul>
+                                <% errors.forEach(error=> { %>
+                                    <li>
+                                        <%= error.msg %>
+                                    </li>
+                                    <% }) %>
+                            </ul>
+                        </div>
+                        <% } %>
+
+                            <div class="management-links">
+                                <a href="/inv/add-classification" class="btn">Add New Classification</a>
+                                <a href="/inv/add-inventory" class="btn">Add New Vehicle</a>
+                            </div>
+        </main>
+</body>
+
+</html>
