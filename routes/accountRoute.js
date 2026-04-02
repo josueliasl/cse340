@@ -2,7 +2,10 @@ const express = require('express')
 const router = new express.Router()
 const utilities = require('../utilities/')
 const accountController = require('../controllers/accountController')
-const regValidate = require('../utilities/account-validation') // <-- new
+const regValidate = require('../utilities/account-validation')
+
+// Route to account management view - PROTECTED with checkLogin
+router.get('/', utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement))
 
 // Route to build login view
 router.get('/login', utilities.handleErrors(accountController.buildLogin))
@@ -18,12 +21,11 @@ router.post(
   utilities.handleErrors(accountController.registerAccount)
 )
 
-
 router.post(
   "/login",
-  (req, res) => {
-    res.status(200).send('login process')
-  }
+  regValidate.loginRules(),
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.accountLogin)
 )
 
 module.exports = router

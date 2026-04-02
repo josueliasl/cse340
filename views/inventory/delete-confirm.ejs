@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+        <main>
+            <h1>Delete <%= inv_make %>
+                    <%= inv_model %>
+            </h1>
+
+            <% if (messages && messages.notice) { %>
+                <div class="flash-message flash-notice">
+                    <%= messages.notice %>
+                </div>
+                <% } %>
+
+                    <% if (errors && errors.length> 0) { %>
+                        <div class="flash-message flash-error">
+                            <ul>
+                                <% errors.forEach(error=> { %>
+                                    <li>
+                                        <%= error.msg %>
+                                    </li>
+                                    <% }) %>
+                            </ul>
+                        </div>
+                        <% } %>
+
+                            <p class="delete-confirm-msg">
+                                <strong>Confirm Deletion - The deletion is permanent and cannot be undone.</strong>
+                            </p>
+
+                            <form class="delete-form" action="/inv/delete" method="post">
+                                <fieldset>
+                                    <label for="invMake">Make</label>
+                                    <input type="text" id="invMake" name="inv_make" readonly value="<%= inv_make %>">
+
+                                    <label for="invModel">Model</label>
+                                    <input type="text" id="invModel" name="inv_model" readonly value="<%= inv_model %>">
+
+                                    <label for="invYear">Year</label>
+                                    <input type="text" id="invYear" name="inv_year" readonly value="<%= inv_year %>">
+
+                                    <label for="invPrice">Price</label>
+                                    <input type="text" id="invPrice" name="inv_price" readonly value="<%= inv_price %>">
+
+                                    <input type="hidden" name="inv_id" value="<%= inv_id %>">
+
+                                    <div class="form-buttons">
+                                        <button type="submit" class="delete-btn">Delete</button>
+                                        <a href="/inv/" class="button-cancel">Cancel</a>
+                                    </div>
+                                </fieldset>
+                            </form>
+        </main>
+        <%- include('../partials/footer') %>
+</body>
+
+</html>
