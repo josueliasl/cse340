@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+        <main>
+            <h1>
+                <%= title %>
+            </h1>
+            
+            <% if (messages && messages.success) { %>
+                <div class="flash-message flash-success"><%= messages.success %></div>
+            <% } %>
+            <% if (messages && messages.error) { %>
+                <div class="flash-message flash-error"><%= messages.error %></div>
+            <% } %>
+            
+            <% if (errors && errors.length > 0) { %>
+                <div class="flash-message flash-error">
+                    <ul>
+                        <% errors.forEach(error => { %>
+                            <li><%= error.msg %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            <% } %>
+            
+            <!-- Account Update Form -->
+            <h2>Update Account Information</h2>
+            <form id="accountUpdateForm" action="/account/update-account" method="post" onsubmit="return validateAccountForm()">
+                <input type="hidden" name="account_id" value="<%= accountData.account_id %>">
+                
+                <label for="account_firstname">First Name *</label>
+                <input type="text" name="account_firstname" id="account_firstname" required value="<%= accountData.account_firstname %>">
+                
+                <label for="account_lastname">Last Name *</label>
+                <input type="text" name="account_lastname" id="account_lastname" required value="<%= accountData.account_lastname %>">
+                
+                <label for="account_email">Email Address *</label>
+                <input type="email" name="account_email" id="account_email" required value="<%= accountData.account_email %>">
+                
+                <button type="submit">Update Account</button>
+            </form>
+            
+            <hr>
+            
+            <!-- Password Change Form -->
+            <h2>Change Password</h2>
+            <div class="password-requirements">
+                Passwords must be at least 12 characters and contain at least 1 number,
+                1 capital letter, and 1 special character.
+            </div>
+            <form id="passwordUpdateForm" action="/account/update-password" method="post" onsubmit="return validatePasswordForm()">
+                <input type="hidden" name="account_id" value="<%= accountData.account_id %>">
+                
+                <label for="account_password">New Password *</label>
+                <input type="password" name="account_password" id="account_password" required
+                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+                    title="Password must be at least 12 characters, contain at least one number, one uppercase letter, one lowercase letter, and one special character.">
+                
+                <label for="confirm_password">Confirm New Password *</label>
+                <input type="password" name="confirm_password" id="confirm_password" required>
+                
+                <button type="submit">Update Password</button>
+            </form>
+            
+            <p><a href="/account/">Back to Account Management</a></p>
+        </main>
+        <%- include('../partials/footer') %>
+        
+        <script>
+            function validateAccountForm() {
+                const firstName = document.getElementById('account_firstname').value.trim();
+                const lastName = document.getElementById('account_lastname').value.trim();
+                const email = document.getElementById('account_email').value.trim();
+                
+                if (firstName === '') {
+                    alert('First name is required.');
+                    return false;
+                }
+                if (lastName === '') {
+                    alert('Last name is required.');
+                    return false;
+                }
+                if (email === '') {
+                    alert('Email address is required.');
+                    return false;
+                }
+                if (!email.includes('@') || !email.includes('.')) {
+                    alert('Please enter a valid email address.');
+                    return false;
+                }
+                return true;
+            }
+            
+            function validatePasswordForm() {
+                const password = document.getElementById('account_password').value;
+                const confirm = document.getElementById('confirm_password').value;
+                const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$/;
+                
+                if (password === '') {
+                    alert('Password is required.');
+                    return false;
+                }
+                if (!passwordRegex.test(password)) {
+                    alert('Password must be at least 12 characters, contain at least 1 number, 1 capital letter, and 1 special character.');
+                    return false;
+                }
+                if (password !== confirm) {
+                    alert('Passwords do not match.');
+                    return false;
+                }
+                return true;
+            }
+        </script>
+</body>
+
+</html>
